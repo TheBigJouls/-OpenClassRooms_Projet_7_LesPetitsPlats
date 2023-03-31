@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Reservation</title>
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+
+  </head>
+<body>
+
+<header class="flex">
+    <img class="logo" src="images/petit-plats-logo.png" alt="Les Petits Plats">
+</header>
+
+<main>
+    <section class="main-container">
+        <div id="search-bar">
+            <input id="search-input" type="search" placeholder="Rechercher une recette">
+             <button>
+                <i class="fa fa-search fa-3" aria-hidden="true"></i>
+                
+            </button>
+        </div>
+
+       
+        <div id="choice-container">
+          
+            <div id="tag-result"></div>
+           
+            <div id="dropdown" class="flex">
+
+                <div id="ingredients" class="dropdown-choice">
+                    <div class="dropdown-btn" data-name="ingredients">
+                        <p class="dropdown-title">Ingrédients</p>
+                        <input class="dropdown-input" type="search" placeholder="Rechercher un ingrédient">
+                        <button class="icone-arrow">
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="choice">
+                        <ul id="choice-ingredients" class="options"></ul>
+                    </div>
+                </div>
+
+                <div id="appareils" class="dropdown-choice">
+                    <div class="dropdown-btn" data-name="appareils">
+                        <p class="dropdown-title">Appareils</p>
+                        <input class="dropdown-input" type="search" placeholder="Rechercher un appareil" >
+                        <button class="icone-arrow">
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="choice">
+                        <ul id="choice-appareils" class="options"></ul>
+                    </div>
+                </div>
+
+                <div id="ustensiles" class="dropdown-choice">
+                    <div class="dropdown-btn" data-name="ustensiles">
+                        <p class="dropdown-title">Ustensiles</p>
+                        <input class="dropdown-input" type="search" placeholder="Rechercher un ustensile" >
+                        <button class="icone-arrow">
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="choice">
+                        <ul id="choice-ustensiles" class="options"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section id="recipes-container"></section>
+    <section id="error-result" class="flex"></section>
+
+</main>
+<script src="data/recipes.json"></script>
+<script src="js/index-boucles.js"></script>
+
+</body>
+</html>
