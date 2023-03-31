@@ -56,5 +56,3 @@ function getAllIngredients(recipes) {
     });
     return Array.from(ingredientsSet);
 }
-console.log("les recettes 1?")
-console.log("les recettes 2?")
