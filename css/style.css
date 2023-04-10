@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto&display=swap');
-
+@import url('recipe-cards.css');
 * {
     padding: 0;
     margin: 0;
@@ -69,16 +69,16 @@ button {
 }
 
 /* TRI */
-#choice-container {
+#dropdown-container {
     margin: 25px 0; 
 }
-#choice-container .flex {
+#dropdown-container .flex {
     gap : 20px
 }
 #dropdown {
     font-size: 18px;
 }
-.dropdown-choice .dropdown-btn {
+.dropdown-tag .dropdown-btn {
     display: flex;  
     justify-content: space-between;
     align-items: center;
@@ -98,21 +98,21 @@ button {
 }
 /* BACKGROUND */
 #ingredients .dropdown-btn,
-#choice-ingredients  {
+#tag-ingredients  {
     background: #3282F7;
 }
 #ingredients .dropdown-btn:hover {
     background: #2866c4;
 }
 #appareils .dropdown-btn,
-#choice-appareils {
+#tag-appareils {
     background: #68D9A4;
 }
 #appareils .dropdown-btn:hover {
     background: #50aa80;
 }
 #ustensiles .dropdown-btn,
-#choice-ustensiles {
+#tag-ustensiles {
     background-color: #ED6454;
 }
 #ustensiles .dropdown-btn:hover {
@@ -131,7 +131,7 @@ button {
 }
 
 /* ONCLICK BTN */
-.choice {
+.tag {
     display: block;
     width: 660px;
     max-height: 360px;
@@ -152,6 +152,11 @@ button {
     height: 45px;
     color: rgba(255,255,255,0.95);
     cursor: pointer;
+}
+
+.show {
+    display: block;
+    z-index:100;
 }
 
 /* ACTIVE */
@@ -190,7 +195,7 @@ button {
 }
 
 /* TAG */
-#choice-result {
+#tag-result {
     display: flex;
     flex-wrap: wrap;
 }
@@ -321,7 +326,7 @@ button {
     #ustensiles.active .dropdown-btn {
         width: 100%;
     }
-    .choice {
+    .tag {
         position: relative;
         width: 100%;
 
