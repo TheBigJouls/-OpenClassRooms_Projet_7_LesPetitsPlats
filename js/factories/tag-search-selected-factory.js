@@ -21,7 +21,7 @@ class TagFactory {
     }
 
     createSearchInput() {
-        const searchInputContainer = document.querySelector(`.dropdown-search[data-tag-id="${this.tagId}"]`);
+        const searchInputContainer = document.querySelector(`.dropdown-search`);
         
         const searchInput = document.createElement('input');
         searchInput.type = 'text';
