@@ -21,11 +21,11 @@ class TagFactory {
     }
 
     createSearchInput() {
-        const searchInputContainer = document.querySelector(`.dropdown-search`);
+        const searchInputContainer = document.querySelector(`.dropdown-search[data-name="${this.tagId}"]`);
         
         const searchInput = document.createElement('input');
         searchInput.type = 'text';
-        searchInput.placeholder = 'Search tags...';
+        searchInput.placeholder = 'Rechercher un tag';
         searchInput.addEventListener('input', () => {
             this.filterItems(this.tagId, searchInput.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''));
         });
