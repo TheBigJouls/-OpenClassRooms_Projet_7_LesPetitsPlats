@@ -15,8 +15,8 @@ loadRecipes().then(recipes => {
 
     // Créer une instance de la classe RecipeFactory qui affiche les cartes de recettes avec la méthode createRecipeCardDOM
     recipes.forEach(recipeData => {
-        const recipeCards = new RecipeFactory(recipeData);
-        recipeCards.createRecipeCardDOM();
+        const recipeCards = new RecipeFactory();
+        recipeCards.createRecipeCardDOM(recipeData);
     });
 
     
@@ -33,8 +33,8 @@ loadRecipes().then(recipes => {
 
         // Créer une instance de la classe RecipeFactory qui affiche les nouvelles cartes de recettes avec la méthode createRecipeCardDOM
         filteredRecipes.forEach(recipeData => {
-            const recipeCards = new RecipeFactory(recipeData);
-            recipeCards.createRecipeCardDOM();
+            const recipeCards = new RecipeFactory();
+            recipeCards.createRecipeCardDOM(recipeData);
         });
 
         console.log(filteredRecipes);

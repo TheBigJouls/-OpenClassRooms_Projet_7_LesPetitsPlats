@@ -1,20 +1,9 @@
 class RecipeFactory {
-    constructor(recipeData) {
-        this.recipeData = recipeData;
-        this.id = recipeData.id;
-        this.name = recipeData.name;
-        this.servings = recipeData.servings;
-        this.ingredients = recipeData.ingredients;
-        this.ingredient = recipeData.ingredient;
-        this.quantity = recipeData.quantity;
-        this.unit = recipeData.unit;
-        this.time = recipeData.time;
-        this.description = recipeData.description;
-        this.appliance = recipeData.appliance;
-        this.ustensils = recipeData.ustensils;
+    constructor() {
+        
     }
 
-    createRecipeCardDOM() {
+    createRecipeCardDOM(recipeData) {
         const recipeContainer = document.getElementById('recipes-container');
 
         const recipeCards = document.createElement('div');
@@ -24,14 +13,22 @@ class RecipeFactory {
         recipeImg.classList.add('recipe-img');
         recipeCards.appendChild(recipeImg);
 
-        const recipeText = document.createElement('div');
-        recipeText.classList.add('recipe-text');
-        recipeCards.appendChild(recipeText);
+        const recipeTextContainer = document.createElement('div');
+        recipeTextContainer.classList.add('recipe-text-container');
+        recipeCards.appendChild(recipeTextContainer);
+
+        const recipeContainerOne = document.createElement('div');
+        recipeContainerOne.classList.add('recipe-container-one');
+        recipeTextContainer.appendChild(recipeContainerOne);
+
+        const recipeContainerTwo = document.createElement('div');
+        recipeContainerTwo.classList.add('recipe-container-two');
+        recipeTextContainer.appendChild(recipeContainerTwo);
 
         const nameText = document.createElement('h2');
         nameText.classList.add('recipe-name');
-        nameText.textContent = this.name;
-        recipeText.appendChild(nameText);
+        nameText.textContent = recipeData.name;
+        recipeContainerOne.appendChild(nameText);
 
         const timeContainer = document.createElement('p');
         timeContainer.classList.add('recipe-time');
@@ -42,41 +39,36 @@ class RecipeFactory {
 
         const timeText = document.createElement('span');
         timeText.classList.add('recipe-time-text');
-        timeText.textContent = ` ${this.time} minutes`;
+        timeText.textContent = ` ${recipeData.time} min`;
 
         timeContainer.appendChild(iconText);
         timeContainer.appendChild(timeText);
-        recipeText.appendChild(timeContainer);
+        recipeContainerOne.appendChild(timeContainer);
 
         const ingredientsList = document.createElement('ul');
         ingredientsList.classList.add('recipe-ingredients');
-        this.ingredients.forEach(ingredient => {
-            const ingredientElement = document.createElement('li');
-            ingredientElement.textContent = `${ingredient.ingredient}: ${ingredient.quantity || ''} ${ingredient.unit || ''}`;
-            ingredientsList.appendChild(ingredientElement);
-        });
-        recipeText.appendChild(ingredientsList);
+
+        recipeData.ingredients.forEach(ingredient => {
+        const ingredientElement = document.createElement('li');
+
+        const ingredientName = document.createElement('span');
+        ingredientName.classList.add('ingredient-title'); //
+        ingredientName.textContent = ingredient.ingredient;
+
+        const ingredientDetails = document.createTextNode(`: ${ingredient.quantity || ''} ${ingredient.unit || ''}`);
+
+        ingredientElement.appendChild(ingredientName);
+        ingredientElement.appendChild(ingredientDetails);
+        ingredientsList.appendChild(ingredientElement);
+            });
+        
+        recipeContainerTwo.appendChild(ingredientsList);
 
         const descriptionElement = document.createElement('p');
         descriptionElement.classList.add('recipe-description');
-        descriptionElement.textContent = this.description;
-        recipeText.appendChild(descriptionElement);
-
-        const applianceElement = document.createElement('p');
-        applianceElement.classList.add('recipe-appliance');
-        applianceElement.textContent = `Appareil: ${this.appliance}`;
-        recipeText.appendChild(applianceElement);
-
-        const ustensilsList = document.createElement('ul');
-        ustensilsList.classList.add('recipe-ustensils');
-        this.ustensils.forEach(ustensil => {
-            const ustensilElement = document.createElement('li');
-            ustensilElement.textContent = ustensil;
-            ustensilsList.appendChild(ustensilElement);
-        });
-        recipeText.appendChild(ustensilsList);
+        descriptionElement.textContent = recipeData.description;
+        recipeContainerTwo.appendChild(descriptionElement);
 
         recipeContainer.appendChild(recipeCards);
-        console.log("coucouc")
     }
 }

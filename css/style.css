@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto&display=swap');
 @import url('recipe-cards.css');
+@import url('dropdown-tag.css');
 * {
     padding: 0;
     margin: 0;
@@ -18,7 +19,10 @@ button {
     cursor: pointer;
 }
 
-
+h2 {
+    font-size:18px;
+    font-weight:400;
+}
 .flex {
     display: flex;
 }
@@ -68,96 +72,6 @@ button {
     font-size: 26px !important;
 }
 
-/* TRI */
-#dropdown-container {
-    margin: 25px 0; 
-}
-#dropdown-container .flex {
-    gap : 20px
-}
-#dropdown {
-    font-size: 18px;
-}
-.dropdown-tag .dropdown-btn {
-    display: flex;  
-    justify-content: space-between;
-    align-items: center;
-    width: auto;
-    min-width: 170px;
-    height: 69px;
-    color: #fff;
-    border-radius: 5px;
-    padding: 24px 15px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-}
-
-#dropdown  button i {
-    color:#FFF;
-    font-size: 26px !important;
-}
-/* BACKGROUND */
-#ingredients .dropdown-btn,
-#tag-ingredients  {
-    background: #3282F7;
-}
-#ingredients .dropdown-btn:hover {
-    background: #2866c4;
-}
-#appareils .dropdown-btn,
-#tag-appareils {
-    background: #68D9A4;
-}
-#appareils .dropdown-btn:hover {
-    background: #50aa80;
-}
-#ustensiles .dropdown-btn,
-#tag-ustensiles {
-    background-color: #ED6454;
-}
-#ustensiles .dropdown-btn:hover {
-    background-color: #b84b3f;
-}
-
-.dropdown-input {
-    font-size: 18px;
-    display: none;
-}
-.dropdown-input::placeholder {
-    color: rgba(255,255,255,0.80);
-}
-.icone-arrow img {
-    transition: 0.3s linear;
-}
-
-/* ONCLICK BTN */
-.tag {
-    display: block;
-    width: 660px;
-    max-height: 360px;
-    position: absolute;
-    z-index: 1;
-    overflow: auto;
-    border-radius: 0 0 5px 5px;
-}
-.options {
-    display: none;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 5%;
-    padding-top: 10px;
-    padding-inline-start: 10px;
-}
-.options li {
-    display: flex;
-    height: 45px;
-    color: rgba(255,255,255,0.95);
-    cursor: pointer;
-}
-
-.show {
-    display: block;
-    z-index:100;
-}
 
 /* ACTIVE */
 #ingredients.active .icone-arrow img,
@@ -199,20 +113,7 @@ button {
     display: flex;
     flex-wrap: wrap;
 }
-.tag {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 110px;
-    height: 37px;
-    font-weight: 700;
-    font-size: 14px;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    margin: 0px 10px 10px 0px;
-    cursor: pointer;
-}
+
 
 /* CARD */
 #recipes-container {

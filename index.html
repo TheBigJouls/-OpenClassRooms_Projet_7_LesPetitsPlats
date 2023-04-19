@@ -40,39 +40,42 @@
                     <div id="ingredients" class="dropdown-tag">
                         <div class="dropdown-btn" data-name="ingredients">
                             <p class="dropdown-title">Ingrédients</p>
-                            <input class="dropdown-input" type="search" placeholder="Rechercher un ingrédient">
+                            <p class="dropdown-search"></p>
+                            <!--<input class="dropdown-input" type="search" placeholder="Rechercher un ingrédient">-->
                             <button class="icone-arrow">
                                 <i class="fa fa-angle-down" aria-hidden="true"></i>
                             </button>
                         </div>
                         <div class="tag">
-                            <ul id="tag-ingredients" class="options"></ul>
+                            <ul id="tag-ingredients" class="hide_items"></ul>
                         </div>
                     </div>
 
                     <div id="appareils" class="dropdown-tag">
                         <div class="dropdown-btn" data-name="appareils">
                             <p class="dropdown-title">Appareils</p>
-                            <input class="dropdown-input" type="search" placeholder="Rechercher un appareil">
+                            <p class="dropdown-search"></p>
+                            <!--<input class="dropdown-input" type="search" placeholder="Rechercher un appareil">-->
                             <button class="icone-arrow">
                                 <i class="fa fa-angle-down" aria-hidden="true"></i>
                             </button>
                         </div>
                         <div class="tag">
-                            <ul id="tag-appareils" class="options"></ul>
+                            <ul id="tag-appareils" class="hide_items"></ul>
                         </div>
                     </div>
 
                     <div id="ustensiles" class="dropdown-tag">
                         <div class="dropdown-btn" data-name="ustensiles">
                             <p class="dropdown-title">Ustensiles</p>
-                            <input class="dropdown-input" type="search" placeholder="Rechercher un ustensile">
+                            <p class="dropdown-search"></p>
+                            <!--<input class="dropdown-input" type="search" placeholder="Rechercher un ustensile">-->
                             <button class="icone-arrow">
                                 <i class="fa fa-angle-down" aria-hidden="true"></i>
                             </button>
                         </div>
                         <div class="tag">
-                            <ul id="tag-ustensiles" class="options"></ul>
+                            <ul id="tag-ustensiles" class="hide_items"></ul>
                         </div>
                     </div>
                 </div>
@@ -86,7 +89,7 @@
 
     </main>
     <script src="data/recipes.json"></script>
-    <script src="js/factories/tag-factory.js"></script>
+    <script src="js/factories/tag-search-selected-factory.js"></script>
     <script src="js/utils/tag-test.js"></script>
     <script src="js/utils/dropdown-menus.js"></script>
     <script src="js/factories/recipe-cards.js"></script>
