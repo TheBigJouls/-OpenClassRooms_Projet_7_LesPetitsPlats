@@ -71,4 +71,17 @@ class RecipeFactory {
 
         recipeContainer.appendChild(recipeCards);
     }
+
+    getCategoryItems(items, category) {
+        const ul = document.getElementById(category);
+
+        items.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            li.addEventListener('click', () => {
+                console.log('Item sélectionné:', item);
+            });
+            ul.appendChild(li);
+        });
+    }
 }

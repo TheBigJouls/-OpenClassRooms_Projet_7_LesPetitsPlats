@@ -1,5 +1,5 @@
 // Fonction pour charger les recettes à partir du fichier JSON
-async function loadRecipes() {
+async function fetchRecipes() {
     try {
       const response = await fetch('data/recipes.json');
       const recipes = await response.json();
@@ -10,16 +10,16 @@ async function loadRecipes() {
   }
 
 // Récupérer la liste de 50 recettes et appliquer les fonctions
-loadRecipes().then(recipes => {
+fetchRecipes().then(recipes => {
     console.log(recipes);
 
+   
     // Créer une instance de la classe RecipeFactory qui affiche les cartes de recettes avec la méthode createRecipeCardDOM
     recipes.forEach(recipeData => {
         const recipeCards = new RecipeFactory();
         recipeCards.createRecipeCardDOM(recipeData);
     });
 
-    
     // Récupérer ce qu'écrit l'utilisateur dans la barre de recherche avec l'ID: searchInput
     const searchInput = document.getElementById('search-input');
 
@@ -81,3 +81,28 @@ function getAllIngredients(recipes) {
     });
     return Array.from(ingredientsSet);
 }
+
+// Fonction pour initialiser les menus déroulants
+async function initDropdowns() {
+    const recipes = await fetchRecipes();
+  // Création de Set uniques
+    const ingredients = new Set();
+    const appareils = new Set();
+    const ustensiles = new Set();
+  // Ajout des items correspondants dans chaque Set
+    recipes.forEach((recipe) => {
+      recipe.ingredients.forEach((ingredient) => ingredients.add(ingredient.ingredient));
+      appareils.add(recipe.appliance);
+      recipe.ustensils.forEach((ustensil) => ustensiles.add(ustensil));
+    });
+  
+   
+  
+  
+    const ingredientsDropdown = new RecipeFactory();
+    ingredientsDropdown.getCategoryItems(Array.from(ingredients), 'tag-ingredients')
+  
+  }
+  
+  initDropdowns();
+  
