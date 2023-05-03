@@ -24,10 +24,10 @@
         <section class="main-container">
             <div id="search-bar">
                 <input id="search-input" type="search" placeholder="Rechercher une recette">
-                <button>
+                <span>
                     <i class="fa fa-search fa-3" aria-hidden="true"></i>
 
-                </button>
+                </span>
             </div>
 
 
@@ -39,45 +39,56 @@
 
                     <div id="ingredients" class="dropdown-tag">
                         <div class="dropdown-btn" data-name="ingredients">
-                            <p class="dropdown-title">Ingrédients</p>
-                            <p class="dropdown-search"></p>
-                            <!--<input class="dropdown-input" type="search" placeholder="Rechercher un ingrédient">-->
-                            <button class="icone-arrow">
+                            <div class="dropdown-btn-title">
+                            <p class="dropdown-title">Ingrédients 
+                                <span class="icone-arrow">
                                 <i class="fa fa-angle-down" aria-hidden="true"></i>
-                            </button>
+                                </span>
+                            </p>
+                            </div>
+                            <div class="dropdown-btn-search" data-name="ingredients"></div>
                         </div>
+                        
                         <div class="tag">
-                            <ul id="tag-ingredients" class="hide_items"></ul>
+                            <ul id="tag-ingredients" class="hide_tags"></ul>
                         </div>
                     </div>
 
-                    <div id="appareils" class="dropdown-tag">
-                        <div class="dropdown-btn" data-name="appareils">
-                            <p class="dropdown-title">Appareils</p>
-                            <p class="dropdown-search"></p>
-                            <!--<input class="dropdown-input" type="search" placeholder="Rechercher un appareil">-->
-                            <button class="icone-arrow">
+                    <div id="appliances" class="dropdown-tag">
+                        <div class="dropdown-btn" data-name="appliances">
+                            <div class="dropdown-btn-title">
+                            <p class="dropdown-title">Appliances 
+                                <span class="icone-arrow">
                                 <i class="fa fa-angle-down" aria-hidden="true"></i>
-                            </button>
+                                </span>
+                            </p>
+                            </div>
+                            <div class="dropdown-btn-search" data-name="appliances"></div>
                         </div>
+                        
                         <div class="tag">
-                            <ul id="tag-appareils" class="hide_items"></ul>
+                            <ul id="tag-appliances" class="hide_tags"></ul>
                         </div>
                     </div>
 
-                    <div id="ustensiles" class="dropdown-tag">
-                        <div class="dropdown-btn" data-name="ustensiles">
-                            <p class="dropdown-title">Ustensiles</p>
-                            <p class="dropdown-search"></p>
-                            <!--<input class="dropdown-input" type="search" placeholder="Rechercher un ustensile">-->
-                            <button class="icone-arrow">
+                    <div id="ustensils" class="dropdown-tag">
+                        <div class="dropdown-btn" data-name="ustensils">
+                            <div class="dropdown-btn-title">
+                            <p class="dropdown-title">Ustensils 
+                                <span class="icone-arrow">
                                 <i class="fa fa-angle-down" aria-hidden="true"></i>
-                            </button>
+                                </span>
+                            </p>
+                            </div>
+                            <div class="dropdown-btn-search" data-name="ustensils"></div>
                         </div>
+                        
                         <div class="tag">
-                            <ul id="tag-ustensiles" class="hide_items"></ul>
+                            <ul id="tag-ustensils" class="hide_tags"></ul>
                         </div>
                     </div>
+
+
                 </div>
             </div>
 
@@ -89,8 +100,8 @@
 
     </main>
     <script src="data/recipes.json"></script>
-    <script src="js\utils\tagmanager.js"></script>
-    <script src="js/utils/dropdown-menus.js"></script>
+    <script src="js/utils/tag-manager.js"></script>
+    <script src="js/utils/dropdown-manager.js"></script>
    <script src="js/factories/recipe-factory.js"></script>
     <script src="js/index.js"></script>
 

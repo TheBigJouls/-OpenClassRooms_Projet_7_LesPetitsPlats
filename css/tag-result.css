@@ -1,0 +1,23 @@
+#tag-result {
+    margin-bottom:20px;
+}
+
+.selected-tag {
+    background-color: #3282F7;
+    box-sizing: border-box;
+    align-items: baseline;
+    align-items:center;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    height: 45px;
+    color: rgba(255,255,255,0.95);
+    cursor: pointer;
+    z-index: 1000;
+    font-size:16px;
+}
+
+.selected-tag img {
+    margin-left:5px;
+
+}

@@ -30,21 +30,21 @@
 #tag-ingredients  {
     background: #3282F7;
 }
-#ingredients .dropdown-btn:hover {
+#appliances .dropdown-btn:hover {
     background: #2866c4;
 }
-#appareils .dropdown-btn,
-#tag-appareils {
+#appliances .dropdown-btn,
+#tag-appliances {
     background: #68D9A4;
 }
-#appareils .dropdown-btn:hover {
+#appliances .dropdown-btn:hover {
     background: #50aa80;
 }
-#ustensiles .dropdown-btn,
-#tag-ustensiles {
+#ustensils .dropdown-btn,
+#tag-ustensils {
     background-color: #ED6454;
 }
-#ustensiles .dropdown-btn:hover {
+#ustensils .dropdown-btn:hover {
     background-color: #b84b3f;
 }
 
@@ -71,11 +71,11 @@
 
 }
 
-.hide_items {
+.hide_tags {
     display:none;
 }
 
-.show_items {
+.show_tags {
     display: flex;
     flex-wrap: wrap;
     z-index:100;
@@ -84,7 +84,7 @@
     width: 100%;
 }
 
-.show_items li {
+.show_tags li {
     box-sizing: border-box;
     align-items: baseline;
     align-items:center;
@@ -98,17 +98,17 @@
     z-index: 1000;
 }
 
-#ingredients .show_items li:hover {
+#appliances .show_tags li:hover {
     background-color: #2866c4;
     cursor: pointer;
 }
 
-#appareils .show_items li:hover {
+#appliances .show_tags li:hover {
     background-color: #50aa80;
     cursor: pointer;
 }
 
-#ustensiles .show_items li:hover {
+#ustensils .show_tags li:hover {
     background-color: #b84b3f;
     cursor: pointer;
 }
@@ -119,5 +119,15 @@
   
   .show_input {
     display: block;
+  }
+
+  .dropdown-btn-search input {
+    
+    color: #f1f1f1;
+    font-size: 16px;
+    width: 90%;
+    height: 90%;
+    border:0;
+    outline:0;
   }
   

@@ -72,16 +72,34 @@ class RecipeFactory {
         recipeContainer.appendChild(recipeCards);
     }
 
-    getCategoryItems(items, category) {
-        const ul = document.getElementById(category);
+    getCategoryTags(tags, tagType, tagManager) {
+        const ulTagType = document.getElementById(tagType);
 
-        items.forEach(item => {
+        tags.forEach(tag => {
             const li = document.createElement('li');
-            li.textContent = item;
+            li.textContent = tag;
             li.addEventListener('click', () => {
-                console.log('Item sélectionné:', item);
+                if (tagManager.selectedTags.includes(tag)) {
+                    tagManager.removeTag(tag);
+                } else {
+                    tagManager.addTag(tag);
+                }
             });
-            ul.appendChild(li);
+            ulTagType.appendChild(li);
         });
     }
+
+    updateCategoryTags(tags, tagType, tagManager) {
+        const ulTagType = document.getElementById(tagType);
+        ulTagType.innerHTML = ''; // Supprimer les anciens éléments
+    
+        tags.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          li.addEventListener('click', () => {
+            tagManager.addTag(item);
+          });
+          ulTagType.appendChild(li);
+        });
+      }
 }
