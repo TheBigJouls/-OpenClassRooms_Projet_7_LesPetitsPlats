@@ -24,4 +24,3 @@ class SearchInputManager {
       console.log(filteredRecipes);
     }
   }
-  

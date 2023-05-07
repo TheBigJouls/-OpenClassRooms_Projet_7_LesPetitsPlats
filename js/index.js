@@ -20,8 +20,11 @@ fetchRecipes().then(recipes => {
     recipeCards.createRecipeCardDOM(recipeData);
   });
 
-  // Create a new SearchInputManager instance
-  const searchInputManager = new SearchInputManager(recipes);
+   // Créer une nouvelle instance de SearchInputManager
+   const searchInputManager = new SearchInputManager(recipes);
+
+   // Créer une nouvelle instance de FilterManager avec l'instance de SearchInputManager
+   //const filterManager = new FilterManager(searchInputManager);
 
 });
 
