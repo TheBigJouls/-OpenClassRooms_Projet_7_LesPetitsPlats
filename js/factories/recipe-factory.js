@@ -1,6 +1,8 @@
 class RecipeFactory {
-    constructor() {
-        
+    constructor(filterManager, tagManager) {
+      this.filterManager = filterManager;
+      this.tagManager = tagManager;
+      
     }
 
     createRecipeCardDOM(recipeData) {
@@ -72,9 +74,9 @@ class RecipeFactory {
         recipeContainer.appendChild(recipeCards);
     }
 
-    getCategoryTags(tags, tagType, tagManager) {
+    getTypeTags(tags, tagType, tagManager) {
         const ulTagType = document.getElementById(tagType);
-
+        ulTagType.innerHTML = ''; // Supprimer les anciens éléments
         tags.forEach(tag => {
             const li = document.createElement('li');
             li.textContent = tag;
@@ -89,17 +91,5 @@ class RecipeFactory {
         });
     }
 
-    updateCategoryTags(tags, tagType, tagManager) {
-        const ulTagType = document.getElementById(tagType);
-        ulTagType.innerHTML = ''; // Supprimer les anciens éléments
-    
-        tags.forEach(item => {
-          const li = document.createElement('li');
-          li.textContent = item;
-          li.addEventListener('click', () => {
-            tagManager.addTag(item);
-          });
-          ulTagType.appendChild(li);
-        });
-      }
+ 
 }

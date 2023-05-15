@@ -1,6 +1,11 @@
 class FilterManager {
   constructor(recipes) {
     this.recipes = recipes;
+    this.container = document.getElementById('recipes-container');
+    this.searchInput = document.getElementById('search-input');
+
+    const filterManagerInstance = this;
+    this.tagManager = new TagManager(filterManagerInstance, this.searchInput);
   }
 
   // Mthode qui permet d'ignorer la casse et l'accent sur les mots
@@ -42,12 +47,12 @@ class FilterManager {
     const filteredRecipes = this.recipes.filter(recipe => {
       return selectedTags.every(tag => {
         return (
-          normalizeString(recipe.name).includes(tag) ||
+          FilterManager.normalizeString(recipe.name).includes(tag) ||
           recipe.ingredients.some(ing =>
-            normalizeString(ing.ingredient).includes(tag)
+            FilterManager.normalizeString(ing.ingredient).includes(tag)
           ) ||
-          normalizeString(recipe.appliance).includes(tag) ||
-          recipe.ustensils.some(ut => normalizeString(ut).includes(tag))
+          FilterManager.normalizeString(recipe.appliance).includes(tag) ||
+          recipe.ustensils.some(ut => FilterManager.normalizeString(ut).includes(tag))
         );
       });
     });
@@ -88,5 +93,25 @@ class FilterManager {
     });
 
     return Array.from(ustensils);
+  }
+
+  updateSearchResults() {
+    const searchTerm = this.searchInput.value;
+    const selectedTags = this.tagManager.selectedTags;
+    const filteredRecipesBySearchTerm = this.filterBySearchTerm(searchTerm);
+    const filteredRecipes = this.filterBySelectedTags(selectedTags).filter(r => filteredRecipesBySearchTerm.includes(r));
+
+    this.container.innerHTML = '';
+
+    // Create a new instance of the RecipeFactory class to display the new recipe cards with the createRecipeCardDOM method
+    const recipeCards = new RecipeFactory();
+    filteredRecipes.forEach(recipeData => {
+      recipeCards.createRecipeCardDOM(recipeData);
+    });
+
+    console.log(filteredRecipes);
+
+    // Update selectable tags after filtering recipes
+    this.tagManager.updateSelectableTags(filteredRecipes);
   }
 }

@@ -1,8 +1,10 @@
 class TagManager {
-  constructor() {
+  constructor(filterManager, searchInput) {
+    this.filterManager = filterManager;
+    this.searchInput = searchInput;
+    console.log('Search input being used:', searchInput);
     this.selectedTags = [];
     this.tagContainer = document.getElementById('tag-result');
-    //this.updaterecipes
   }
 
   addTag(tag) {
@@ -28,6 +30,7 @@ class TagManager {
     }
 
     this.updateSelectableTags();
+    this.filterManager.updateSearchResults();
   }
 
   removeTag(tag) {
@@ -46,14 +49,24 @@ class TagManager {
     }
 
     this.updateSelectableTags();
+    this.filterManager.updateSearchResults();
   }
 
 
-  updateSelectableTags(recipes) {
-      const filteredRecipes = filterRecipesBySelectedTags(recipes, Array.from(this.selectedTags));
-      const ingredients = getAllIngredients(filteredRecipes);
-      const appliances = getAllappliances(filteredRecipes);
-      const ustensils = getAllustensils(filteredRecipes);
+  updateSelectableTags() {
+    const searchTerm = this.searchInput.value;
+    const filteredRecipesBySearchAndTags = this.filterManager.filterBySearchTerm(searchTerm);
+    const filteredRecipes = this.filterManager.filterBySelectedTags(this.selectedTags).filter(r => filteredRecipesBySearchAndTags.includes(r));
+
+    const ingredients = this.filterManager.getAllIngredients(filteredRecipes);
+    const appliances = this.filterManager.getAllAppliances(filteredRecipes);
+    const ustensils = this.filterManager.getAllUstensils(filteredRecipes);
+
+    // Mettre à jour les tags sélectionnables pour les ingrédients, appliances et ustensils
+    const typeTagsList = new RecipeFactory();
+    typeTagsList.getTypeTags(ingredients, 'tag-ingredients', this);
+    typeTagsList.getTypeTags(appliances, 'tag-appliances', this);
+    typeTagsList.getTypeTags(ustensils, 'tag-ustensils', this);
   }
 
   
