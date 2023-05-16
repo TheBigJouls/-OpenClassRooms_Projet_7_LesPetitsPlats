@@ -17,27 +17,32 @@ class FilterManager {
   filterBySearchTerm(searchTerm) {
     const normalizedSearchTerm = FilterManager.normalizeString(searchTerm);
 
-    const filteredRecipes = this.recipes.filter(recipe => {
+    const filteredRecipes = [];
+    
+    for (const recipe of this.recipes) {
       const recipeName = FilterManager.normalizeString(recipe.name);
-      const recipeIngredients = recipe.ingredients.map(ingredient =>
-        FilterManager.normalizeString(ingredient.ingredient)
-      );
+      const recipeIngredients = [];
+      
+      for (const ingredient of recipe.ingredients) {
+        recipeIngredients.push(FilterManager.normalizeString(ingredient.ingredient));
+      }
+      
       const recipeAppliance = FilterManager.normalizeString(recipe.appliance);
-      const recipeUstensils = recipe.ustensils.map(ustensil =>
-        FilterManager.normalizeString(ustensil)
-      );
+      const recipeUstensils = [];
+      
+      for (const ustensil of recipe.ustensils) {
+        recipeUstensils.push(FilterManager.normalizeString(ustensil));
+      }
 
-      return (
-        recipeName.includes(normalizedSearchTerm) ||
-        recipeIngredients.some(ingredient =>
-          ingredient.includes(normalizedSearchTerm)
-        ) ||
-        recipeAppliance.includes(normalizedSearchTerm) ||
-        recipeUstensils.some(ustensil =>
-          ustensil.includes(normalizedSearchTerm)
-        )
-      );
-    });
+      const recipeResults = recipeName.includes(normalizedSearchTerm) ||
+                              recipeIngredients.some(ingredient => ingredient.includes(normalizedSearchTerm)) ||
+                              recipeAppliance.includes(normalizedSearchTerm) ||
+                              recipeUstensils.some(ustensil => ustensil.includes(normalizedSearchTerm));
+
+      if (recipeResults) {
+        filteredRecipes.push(recipe);
+      }
+    }
 
     return filteredRecipes;
   }
@@ -72,25 +77,36 @@ class FilterManager {
   }
 
   // Cette fonction retourne tous les appareils uniques des recettes données
+  getAllIngredients(recipes) {
+    const ingredients = new Set();
+
+    for (const recipe of recipes) {
+      for (const ingredient of recipe.ingredients) {
+        ingredients.add(FilterManager.normalizeString(ingredient.ingredient));
+      }
+    }
+
+    return Array.from(ingredients);
+  }
+
   getAllAppliances(recipes) {
     const appliances = new Set();
 
-    recipes.forEach(recipe => {
+    for (const recipe of recipes) {
       appliances.add(FilterManager.normalizeString(recipe.appliance));
-    });
+    }
 
     return Array.from(appliances);
   }
 
-  // Cette fonction retourne tous les ustensiles uniques des recettes données
   getAllUstensils(recipes) {
     const ustensils = new Set();
 
-    recipes.forEach(recipe => {
-      recipe.ustensils.forEach(ustensil => {
+    for (const recipe of recipes) {
+      for (const ustensil of recipe.ustensils) {
         ustensils.add(FilterManager.normalizeString(ustensil));
-      });
-    });
+      }
+    }
 
     return Array.from(ustensils);
   }
