@@ -7,15 +7,16 @@ class TagManager {
     this.tagContainer = document.getElementById('tag-result');
   }
 
-  addTag(tag) {
+  addTag(tag, tagType) {
     // Vérifier si le tag n'est pas déjà dans selectedTags avant de l'ajouter
     if (!this.selectedTags.includes(tag)) {
       this.selectedTags.push(tag);
 
       const tagElement = document.createElement('span');
       tagElement.className = 'selected-tag';
+      tagElement.classList.add(tagType);
       tagElement.textContent = tag;
-
+      
       const removeButton = document.createElement('img');
       removeButton.className = 'remove-tag';
       removeButton.src = 'images/X.png';
@@ -64,22 +65,9 @@ class TagManager {
 
     // Mettre à jour les tags sélectionnables pour les ingrédients, appliances et ustensils
     const typeTagsList = new RecipeFactory();
-    typeTagsList.getTypeTags(ingredients, 'tag-ingredients', this);
-    typeTagsList.getTypeTags(appliances, 'tag-appliances', this);
-    typeTagsList.getTypeTags(ustensils, 'tag-ustensils', this);
+    typeTagsList.getTypeTags(ingredients, 'tag-ingredients', this, 'ingredient');
+    typeTagsList.getTypeTags(appliances, 'tag-appliances', this, 'appliance');
+    typeTagsList.getTypeTags(ustensils, 'tag-ustensils', this, 'ustensil');
   }
 
-  
-  updateAvailableTags(recipes) {
-      // Filtrer les recettes en fonction des tags sélectionnés
-      const filteredRecipes = recipes.filter(recipe => {
-        return this.selectedTags.every(tag => {
-          return normalizeString(recipe.name).includes(tag) ||
-            recipe.ingredients.some(ing => normalizeString(ing.ingredient).includes(tag)) ||
-            normalizeString(recipe.appliance).includes(tag) ||
-            recipe.ustensils.some(ut => normalizeString(ut).includes(tag));
-        });
-      });
-      return filteredRecipes;
-  }
 }

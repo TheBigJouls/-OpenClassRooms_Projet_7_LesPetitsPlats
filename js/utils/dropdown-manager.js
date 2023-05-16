@@ -39,7 +39,6 @@ class DropdownManager {
 
   createSearchInputs() {
     const searchInputsContainers = document.querySelectorAll('.dropdown-btn-search');
-   //console.log('searchInputsContainers:', searchInputsContainers);
     searchInputsContainers.forEach((searchInputContainer) => {
       const tagType = `tag-${searchInputContainer.dataset.name}`;
       

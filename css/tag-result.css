@@ -3,11 +3,11 @@
 }
 
 .selected-tag {
-    background-color: #3282F7;
     box-sizing: border-box;
     align-items: baseline;
     align-items:center;
     padding: 20px;
+    margin:5px;
     border-radius: 5px;
     display: flex;
     height: 45px;
@@ -20,4 +20,16 @@
 .selected-tag img {
     margin-left:5px;
 
+}
+
+.ingredient {
+    background-color: #3282F7;
+}
+
+.appliance {
+    background-color: #68D9A4;
+}
+
+.ustensil {
+    background-color: #ED6454;
 }

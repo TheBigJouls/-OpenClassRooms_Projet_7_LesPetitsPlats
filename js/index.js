@@ -34,9 +34,9 @@ async function initApp() {
   const ingredients = filterManager.getAllIngredients(recipes);
   const appliances = filterManager.getAllAppliances(recipes);
   const ustensils = filterManager.getAllUstensils(recipes);
-  recipeFactory.getTypeTags(ingredients, 'tag-ingredients', tagManager);
-  recipeFactory.getTypeTags(appliances, 'tag-appliances', tagManager);
-  recipeFactory.getTypeTags(ustensils, 'tag-ustensils', tagManager);
+  recipeFactory.getTypeTags(ingredients, 'tag-ingredients', tagManager, 'ingredient');
+  recipeFactory.getTypeTags(appliances, 'tag-appliances', tagManager, 'appliance');
+  recipeFactory.getTypeTags(ustensils, 'tag-ustensils', tagManager, 'ustensil');
 
  // Mettre à jour les résultats de recherche lorsque les tags sont ajoutées ou supprimées
     tagManager.tagContainer.addEventListener('.selected-tag', () => {

@@ -74,17 +74,18 @@ class RecipeFactory {
         recipeContainer.appendChild(recipeCards);
     }
 
-    getTypeTags(tags, tagType, tagManager) {
+    getTypeTags(tags, tagType, tagManager, tagClass) {
         const ulTagType = document.getElementById(tagType);
         ulTagType.innerHTML = ''; // Supprimer les anciens éléments
         tags.forEach(tag => {
             const li = document.createElement('li');
             li.textContent = tag;
+
             li.addEventListener('click', () => {
                 if (tagManager.selectedTags.includes(tag)) {
                     tagManager.removeTag(tag);
                 } else {
-                    tagManager.addTag(tag);
+                    tagManager.addTag(tag, tagClass);
                 }
             });
             ulTagType.appendChild(li);
