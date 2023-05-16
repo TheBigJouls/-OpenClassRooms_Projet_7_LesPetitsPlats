@@ -24,10 +24,10 @@ async function initApp() {
   
   const recipeFactory = new RecipeFactory(filterManager, tagManager);
 
-  // Générer et afficher les cartes de recettes initiales
-  recipes.forEach(recipeData => {
+   // Générer et afficher les cartes de recettes initiales avec une boucle natives for
+   for (const recipeData of recipes) {
     recipeFactory.createRecipeCardDOM(recipeData);
-  });
+  }
 
 
   // Obtenir et afficher tous les tags pour les ingrédients, les appareils et les ustensiles
