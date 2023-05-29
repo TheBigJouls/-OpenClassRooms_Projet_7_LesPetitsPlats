@@ -24,7 +24,8 @@ async function initApp() {
   
   const recipeFactory = new RecipeFactory(filterManager, tagManager);
 
-   // Générer et afficher les cartes de recettes initiales avec une boucle natives for
+   // Générer et afficher les cartes de recettes initiales 
+   // Utiisation d'une boucle natives for dans la branche loops
    for (const recipeData of recipes) {
     recipeFactory.createRecipeCardDOM(recipeData);
   }

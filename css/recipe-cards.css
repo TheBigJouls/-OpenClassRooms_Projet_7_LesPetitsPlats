@@ -67,3 +67,8 @@ background-color:#E7E7E7;
   .ingredient-title {
     font-weight: 700;
   }
+
+  .no-recipes-message {
+    font-size:18px;
+    font-weight:700;
+  }

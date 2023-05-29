@@ -5,6 +5,7 @@ class RecipeFactory {
       
     }
 
+    // Méthode pour créer les cartes de recette
     createRecipeCardDOM(recipeData) {
         const recipeContainer = document.getElementById('recipes-container');
 
@@ -74,6 +75,7 @@ class RecipeFactory {
         recipeContainer.appendChild(recipeCards);
     }
 
+    // Méthode pour créer les dropdown
     getTypeTags(tags, tagType, tagManager, tagClass) {
         const ulTagType = document.getElementById(tagType);
         ulTagType.innerHTML = ''; // Supprimer les anciens éléments

@@ -8,12 +8,13 @@ class FilterManager {
     this.tagManager = new TagManager(filterManagerInstance, this.searchInput);
   }
 
-  // Mthode qui permet d'ignorer la casse et l'accent sur les mots
+  // Méthode qui permet d'ignorer la casse et l'accent sur les mots
   static normalizeString(str) {
     return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
 
   // Méthode qui filtre les recettes en fonction d'un terme de recherche donné
+  // Utilisation de la boucle for dans cette branche loops
   filterBySearchTerm(searchTerm) {
     const normalizedSearchTerm = FilterManager.normalizeString(searchTerm);
 
@@ -47,7 +48,7 @@ class FilterManager {
     return filteredRecipes;
   }
 
-
+  // Méthode qui filtre les recettes en fonction d'un tag sélectionné
   filterBySelectedTags(selectedTags) {
     const filteredRecipes = this.recipes.filter(recipe => {
       return selectedTags.every(tag => {
@@ -63,20 +64,9 @@ class FilterManager {
     });
     return filteredRecipes;
   }
-  // Cette fonction retourne tous les ingrédients uniques des recettes données
-  getAllIngredients(recipes) {
-    const ingredients = new Set();
-
-    recipes.forEach(recipe => {
-      recipe.ingredients.forEach(ingredient => {
-        ingredients.add(FilterManager.normalizeString(ingredient.ingredient));
-      });
-    });
-
-    return Array.from(ingredients);
-  }
-
-  // Cette fonction retourne tous les appareils uniques des recettes données
+  
+  // Cette méthode retourne tous les ingrédients uniques des recettes données
+  // Utilisation de la boucle for dans cette branche loops
   getAllIngredients(recipes) {
     const ingredients = new Set();
 
@@ -89,6 +79,8 @@ class FilterManager {
     return Array.from(ingredients);
   }
 
+ // Cette méthode retourne tous les appareils uniques des recettes données
+  // Utilisation de la boucle for dans cette branche loops
   getAllAppliances(recipes) {
     const appliances = new Set();
 
@@ -99,6 +91,8 @@ class FilterManager {
     return Array.from(appliances);
   }
 
+  // Cette méthode retourne tous les ustensiles uniques des recettes données
+  // Utilisation de la boucle for dans cette branche loops
   getAllUstensils(recipes) {
     const ustensils = new Set();
 
@@ -111,6 +105,7 @@ class FilterManager {
     return Array.from(ustensils);
   }
 
+  // Cette méthode met à jour les résultats des recherches en fonction du terme recherché et des tags sélectionnés
   updateSearchResults() {
     const searchTerm = this.searchInput.value;
     const selectedTags = this.tagManager.selectedTags;
@@ -119,7 +114,16 @@ class FilterManager {
 
     this.container.innerHTML = '';
 
-    // Create a new instance of the RecipeFactory class to display the new recipe cards with the createRecipeCardDOM method
+   // S'il n'y aucune recette correspondante, cela renvoie un message
+   if (filteredRecipes.length === 0) {
+    const messageElement = document.createElement('p');
+    messageElement.className = 'no-recipes-message';
+    messageElement.textContent = 'Aucune recette ne correspond à votre critère... vous pouvez chercher « tarte aux pommes », « poisson », etc.';
+    this.container.appendChild(messageElement);
+    return; // Stop further execution
+  }
+
+    // Créer une nouvelle instance de la classe RecipeFactory pour afficher les nouvelles fiches de recettes à l'aide de la méthode createRecipeCardDOM.
     const recipeCards = new RecipeFactory();
     filteredRecipes.forEach(recipeData => {
       recipeCards.createRecipeCardDOM(recipeData);
@@ -127,7 +131,7 @@ class FilterManager {
 
     console.log(filteredRecipes);
 
-    // Update selectable tags after filtering recipes
+    // Mise à jour des tags sélectionnables après filtrage des recettes
     this.tagManager.updateSelectableTags(filteredRecipes);
   }
 }
