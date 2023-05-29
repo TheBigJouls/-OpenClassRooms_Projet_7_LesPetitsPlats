@@ -4,7 +4,6 @@ class DropdownManager {
   }
 
   toggleDropdown(tagType, dropdownButton) {
-    console.log("toggleDropdown:", tagType, dropdownButton);
     const ul = document.getElementById(tagType);
     ul.classList.toggle('show_tags');
 
@@ -27,11 +26,9 @@ class DropdownManager {
 
   addDropdownEventListeners() {
     const dropdownButtons = document.getElementsByClassName('dropdown-btn');
-    //console.log('dropdownButtons:', dropdownButtons);
     for (let button of dropdownButtons) {
       button.addEventListener('click', (event) => {
         const tagType = `tag-${event.currentTarget.dataset.name}`;
-       // console.log('tagType:', tagType);
         this.toggleDropdown(tagType, event.currentTarget);
       });
     }
@@ -49,7 +46,6 @@ class DropdownManager {
       searchInput.addEventListener('input', (event) => {
         const searchTerm = event.target.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         const tagType = searchInputContainer.dataset.tagType;
-        console.log('searchTerm, tagType:', searchTerm, tagType); 
         this.filterTags(searchTerm, tagType);
 
         // Appeler la méthode updateSelectableTags() de TagManager pour mettre à jour les recettes en fonction des tags recherchés

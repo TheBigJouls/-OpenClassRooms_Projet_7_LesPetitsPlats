@@ -24,7 +24,8 @@ async function initApp() {
   
   const recipeFactory = new RecipeFactory(filterManager, tagManager);
 
-  // Générer et afficher les cartes de recettes initiales
+   // Générer et afficher les cartes de recettes initiales 
+   // Utiisation de la méthode foreach dans la branche main
   recipes.forEach(recipeData => {
     recipeFactory.createRecipeCardDOM(recipeData);
   });

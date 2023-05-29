@@ -2,7 +2,6 @@ class TagManager {
   constructor(filterManager, searchInput) {
     this.filterManager = filterManager;
     this.searchInput = searchInput;
-    console.log('Search input being used:', searchInput);
     this.selectedTags = [];
     this.tagContainer = document.getElementById('tag-result');
   }

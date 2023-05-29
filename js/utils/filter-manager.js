@@ -103,6 +103,15 @@ class FilterManager {
 
     this.container.innerHTML = '';
 
+   // S'il n'y aucune recette correspondante, cela renvoie un message
+   if (filteredRecipes.length === 0) {
+    const messageElement = document.createElement('p');
+    messageElement.className = 'no-recipes-message';
+    messageElement.textContent = 'Aucune recette ne correspond à votre critère... vous pouvez chercher « tarte aux pommes », « poisson », etc.';
+    this.container.appendChild(messageElement);
+    return; // Stop further execution
+  }
+
     // Create a new instance of the RecipeFactory class to display the new recipe cards with the createRecipeCardDOM method
     const recipeCards = new RecipeFactory();
     filteredRecipes.forEach(recipeData => {
