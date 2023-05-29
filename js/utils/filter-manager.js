@@ -17,36 +17,37 @@ class FilterManager {
   // Utilisation de la boucle for dans cette branche loops
   filterBySearchTerm(searchTerm) {
     const normalizedSearchTerm = FilterManager.normalizeString(searchTerm);
-
     const filteredRecipes = [];
-    
-    for (const recipe of this.recipes) {
+  
+    for (let i = 0; i < this.recipes.length; i++) {
+      const recipe = this.recipes[i];
       const recipeName = FilterManager.normalizeString(recipe.name);
+      
       const recipeIngredients = [];
-      
-      for (const ingredient of recipe.ingredients) {
-        recipeIngredients.push(FilterManager.normalizeString(ingredient.ingredient));
+      for (let j = 0; j < recipe.ingredients.length; j++) {
+        recipeIngredients.push(FilterManager.normalizeString(recipe.ingredients[j].ingredient));
       }
-      
-      const recipeAppliance = FilterManager.normalizeString(recipe.appliance);
-      const recipeUstensils = [];
-      
-      for (const ustensil of recipe.ustensils) {
-        recipeUstensils.push(FilterManager.normalizeString(ustensil));
+  
+      const recipeDescription = FilterManager.normalizeString(recipe.description);
+  
+      let ingredientIncludesSearchTerm = false;
+      for (let k = 0; k < recipeIngredients.length; k++) {
+        if (recipeIngredients[k].includes(normalizedSearchTerm)) {
+          ingredientIncludesSearchTerm = true;
+          break;
+        }
       }
-
-      const recipeResults = recipeName.includes(normalizedSearchTerm) ||
-                              recipeIngredients.some(ingredient => ingredient.includes(normalizedSearchTerm)) ||
-                              recipeAppliance.includes(normalizedSearchTerm) ||
-                              recipeUstensils.some(ustensil => ustensil.includes(normalizedSearchTerm));
-
-      if (recipeResults) {
-        filteredRecipes.push(recipe);
+  
+      if (recipeName.includes(normalizedSearchTerm) || 
+          ingredientIncludesSearchTerm || 
+          recipeDescription.includes(normalizedSearchTerm)) {
+        filteredRecipes.push(this.recipes[i]);
       }
     }
-
+  
     return filteredRecipes;
   }
+  
 
   // Méthode qui filtre les recettes en fonction d'un tag sélectionné
   filterBySelectedTags(selectedTags) {

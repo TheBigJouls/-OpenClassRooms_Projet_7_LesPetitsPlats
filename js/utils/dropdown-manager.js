@@ -1,9 +1,22 @@
 class DropdownManager {
   constructor(tagManager) {
     this.tagManager = tagManager;
+    this.dropdownButtons = document.getElementsByClassName('dropdown-btn');  // Ajouté cette ligne pour garder une référence aux boutons dropdown
+  }
+
+  closeAllDropdowns(exceptTagType) {  // Ajouté un paramètre pour éviter de fermer le dropdown que l'on veut ouvrir
+    for (let button of this.dropdownButtons) {
+      const tagType = `tag-${button.dataset.name}`;
+      const ul = document.getElementById(tagType);
+      if (ul.classList.contains('show_tags') && tagType !== exceptTagType) {  // Ne ferme pas le dropdown que l'on veut ouvrir
+        this.closeDropdown(tagType, button);
+      }
+    }
   }
 
   toggleDropdown(tagType, dropdownButton) {
+    this.closeAllDropdowns(tagType);  // Ferme tous les dropdowns sauf celui que l'on veut ouvrir
+
     const ul = document.getElementById(tagType);
     ul.classList.toggle('show_tags');
 
@@ -24,6 +37,18 @@ class DropdownManager {
     }
   }
 
+  // Méthode pour fermer un dropdown spécifique
+  closeDropdown(tagType, dropdownButton) {
+    const ul = document.getElementById(tagType);
+    const dropdownTitle = dropdownButton.querySelector('.dropdown-btn-title');
+    const searchInputContainer = dropdownButton.querySelector('.dropdown-btn-search');
+    if (ul.classList.contains('show_tags')) {
+      ul.classList.remove('show_tags');
+      dropdownTitle.style.display = 'block';
+      searchInputContainer.style.display = 'none';
+    }
+  }
+
   addDropdownEventListeners() {
     const dropdownButtons = document.getElementsByClassName('dropdown-btn');
     for (let button of dropdownButtons) {
@@ -31,6 +56,14 @@ class DropdownManager {
         const tagType = `tag-${event.currentTarget.dataset.name}`;
         this.toggleDropdown(tagType, event.currentTarget);
       });
+
+      // Ajouter des écouteurs d'événements aux tags
+      const tagList = document.getElementById(`tag-${button.dataset.name}`);
+      if (tagList) {
+        tagList.addEventListener('click', () => {
+          this.closeDropdown(`tag-${button.dataset.name}`, button);
+        });
+      }
     }
   }
 

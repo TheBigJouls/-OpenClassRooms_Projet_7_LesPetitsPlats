@@ -15,6 +15,11 @@ class TagManager {
       tagElement.className = 'selected-tag';
       tagElement.classList.add(tagType);
       tagElement.textContent = tag;
+
+      // Arrêter la propagation de l'événement de clic sur le tagElement
+      tagElement.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
       
       const removeButton = document.createElement('img');
       removeButton.className = 'remove-tag';
