@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-05-29T18:05:17.988Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="b5hrcb5M2vNmwStFFgug" version="21.3.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-05-29T18:06:06.573Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="nNzLuBs9Q7NWD187g7lh" version="21.3.2" type="github">
   <diagram id="h9-nGVWCvcBNPeG7YI5t" name="Page-1">
     <mxGraphModel dx="2856" dy="967" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -177,7 +177,7 @@
         <mxCell id="IoGaBJS2Na2avN20czFi-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="IoGaBJS2Na2avN20czFi-4" target="Jp8aBGNhL-xKk1CDspty-64">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="IoGaBJS2Na2avN20czFi-4" value="Actualiser l&#39;interface avec un message qui affiche &lt;br&gt;&quot;affiche « Aucune recette ne correspond à votre critère... vous pouvez&lt;br role=&quot;presentation&quot;&gt;&lt;span dir=&quot;ltr&quot; role=&quot;presentation&quot; style=&quot;left: 11.59%; top: 22.34%; font-size: calc(var(--scale-factor)*11.00px); font-family: sans-serif; transform: scaleX(0.999692);&quot;&gt;chercher « tarte aux pommes », « poisson », etc&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="IoGaBJS2Na2avN20czFi-4" value="&lt;div&gt;Actualiser l&#39;interface avec un message qui affiche &lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp;« Aucune recette ne correspond à votre critère... vous pouvez&lt;/div&gt;&lt;span dir=&quot;ltr&quot; role=&quot;presentation&quot; style=&quot;left: 11.59%; top: 22.34%; font-size: calc(var(--scale-factor)*11.00px); font-family: sans-serif; transform: scaleX(0.999692);&quot;&gt;chercher « tarte aux pommes », « poisson », etc&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
           <mxGeometry x="790" y="990" width="130" height="160" as="geometry" />
         </mxCell>
         <mxCell id="IoGaBJS2Na2avN20czFi-5" value="FALSE" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
@@ -203,7 +203,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="IoGaBJS2Na2avN20czFi-15" value="Actualiser l&#39;interface avec un message qui affiche &lt;br&gt;&quot;affiche « Aucune recette ne correspond à votre critère... vous pouvez&lt;br role=&quot;presentation&quot;&gt;&lt;span dir=&quot;ltr&quot; role=&quot;presentation&quot; style=&quot;left: 11.59%; top: 22.34%; font-size: calc(var(--scale-factor)*11.00px); font-family: sans-serif; transform: scaleX(0.999692);&quot;&gt;chercher « tarte aux pommes », « poisson », etc&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="IoGaBJS2Na2avN20czFi-15" value="&lt;div&gt;Actualiser l&#39;interface avec un message qui affiche&lt;/div&gt;&lt;div&gt;&amp;nbsp;« Aucune recette ne correspond à votre critère... vous pouvez&lt;/div&gt;&lt;span dir=&quot;ltr&quot; role=&quot;presentation&quot; style=&quot;left: 11.59%; top: 22.34%; font-size: calc(var(--scale-factor)*11.00px); font-family: sans-serif; transform: scaleX(0.999692);&quot;&gt;chercher « tarte aux pommes », « poisson », etc&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
           <mxGeometry x="291" y="984" width="130" height="160" as="geometry" />
         </mxCell>
         <mxCell id="IoGaBJS2Na2avN20czFi-16" value="&lt;div&gt;NON&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
