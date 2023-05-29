@@ -8,7 +8,7 @@ class FilterManager {
     this.tagManager = new TagManager(filterManagerInstance, this.searchInput);
   }
 
-  // Mthode qui permet d'ignorer la casse et l'accent sur les mots
+  // Méthode qui permet d'ignorer la casse et l'accent sur les mots
   static normalizeString(str) {
     return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
@@ -22,25 +22,20 @@ class FilterManager {
       const recipeIngredients = recipe.ingredients.map(ingredient =>
         FilterManager.normalizeString(ingredient.ingredient)
       );
-      const recipeAppliance = FilterManager.normalizeString(recipe.appliance);
-      const recipeUstensils = recipe.ustensils.map(ustensil =>
-        FilterManager.normalizeString(ustensil)
-      );
+      const recipeDescription = FilterManager.normalizeString(recipe.description);
 
       return (
         recipeName.includes(normalizedSearchTerm) ||
         recipeIngredients.some(ingredient =>
-          ingredient.includes(normalizedSearchTerm)
+        ingredient.includes(normalizedSearchTerm)
         ) ||
-        recipeAppliance.includes(normalizedSearchTerm) ||
-        recipeUstensils.some(ustensil =>
-          ustensil.includes(normalizedSearchTerm)
-        )
+        recipeDescription.includes(normalizedSearchTerm)
       );
     });
 
     return filteredRecipes;
   }
+
 
 
   filterBySelectedTags(selectedTags) {
